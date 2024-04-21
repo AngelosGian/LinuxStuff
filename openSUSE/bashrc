@@ -49,13 +49,13 @@ if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
 if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 # Set the default editor
-export EDITOR=code
-export VISUAL=code
+export EDITOR=nano
+export VISUAL=nano
 alias pico='edit'
 alias spico='sedit'
 alias nano='edit'
 alias snano='sedit'
-alias vim='nvim'
+#alias vim='nvim'
 alias vs='code'
 alias cat='batcat'
 
@@ -121,9 +121,9 @@ alias cls='clear'
 alias apt-get='sudo apt-get'
 alias multitail='multitail --no-repeat -c'
 alias freshclam='sudo freshclam'
-alias vi='nvim'
-alias svi='sudo vi'
-alias vis='nvim "+set si"'
+# alias vi='nvim'
+# alias svi='sudo vi'
+# alias vis='nvim "+set si"'
 
 # Change directory aliases
 alias home='cd ~'
@@ -190,13 +190,10 @@ alias openports='netstat -nape --inet'
 alias reboot='sudo shutdown -r now'
 alias shutdown='sudo shutdown now'
 
-#Alias for updated, upgrade distros and install packages
-alias update='sudo nala update'
-alias upgrade='sudo nala upgrade'
-alias instapp='sudo nala install'
-
-#Alias for searching a package
-alias search='nala search'
+# Alias's for updated, upgrade distros and install packages
+alias update='sudo zypper refresh && sudo zypper up'
+alias upgrade='sudo zypper dup'
+alias instapp='sudo zypper in'
 
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
