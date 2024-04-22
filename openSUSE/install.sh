@@ -16,7 +16,7 @@ username=$(id -u -n 1000)
 builddir=$(pwd)
 
 zypper up
-zypper dup -y
+zypper dup
 
 apt install nala git neofetch -y
 nala install shotwell kitty picom lxpolkit x11-xserver-utils unzip wget curl pipewire pavucontrol build-essential libx11-dev libxft-dev libxinerama-dev -y
