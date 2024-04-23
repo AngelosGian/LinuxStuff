@@ -15,23 +15,24 @@ fi
 username=$(id -u -n 1000)
 builddir=$(pwd)
 
+zypper ref
 zypper up
 zypper dup
 
-apt install nala git neofetch -y
-nala install shotwell kitty picom lxpolkit x11-xserver-utils unzip wget curl pipewire pavucontrol build-essential libx11-dev libxft-dev libxinerama-dev -y
-nala install light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome -y
-nala install dolphin -y
+zypper in neofetch shotwell kitty picom
+
 
 cd $builddir
 
 mkdir -p /home/$username/.fonts
 mkdir -p /home/$username/.themes
 mkdir -p /home/$username/.config
-mkdir -p /home/$username/Downloads
-mkdir -p /home/$username/GitHub
-cd GitHub
+mkdir -p /home/$username/Github
+
+cd ~/Downloads
 git clone https://github.com/EliverLara/Sweet.git
+cd ../Github
+
 
 cd $builddir 
 #rename the default bashrc file
