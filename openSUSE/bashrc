@@ -187,7 +187,7 @@ alias shutdown='sudo shutdown now'
 
 # Alias's for updated, upgrade distros and install packages
 alias update='sudo zypper ref;sudo zypper up'
-alias upgrade='sudo zypper dup'
+alias upgrade='sudo zypper dup --allow-vendor-change'
 alias instapp='sudo zypper in'
 alias list='sudo zypper list'
 # Alias's to show disk space and space used in a folder
