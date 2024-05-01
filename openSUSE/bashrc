@@ -118,24 +118,19 @@ alias ps='ps auxf'
 alias ping='ping -c 10'
 alias less='less -R'
 alias cls='clear'
-alias apt-get='sudo apt-get'
 alias multitail='multitail --no-repeat -c'
 alias freshclam='sudo freshclam'
-# alias vi='nvim'
-# alias svi='sudo vi'
-# alias vis='nvim "+set si"'
 
 # Change directory aliases
 alias home='cd ~'
 alias dlds='cd ~/Downloads'
 alias documents='cd ~/Documents'
 alias github='cd ~/GitHub'
+alias videos='cd ~/Videos'
 alias pictures='cd ~/Pictures'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
 
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
@@ -191,10 +186,10 @@ alias reboot='sudo shutdown -r now'
 alias shutdown='sudo shutdown now'
 
 # Alias's for updated, upgrade distros and install packages
-alias update='sudo zypper refresh && sudo zypper up'
+alias update='sudo zypper ref;sudo zypper up'
 alias upgrade='sudo zypper dup'
 alias instapp='sudo zypper in'
-
+alias list='sudo zypper list'
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
