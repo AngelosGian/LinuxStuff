@@ -38,8 +38,8 @@ cd $builddir
 
 
 #copying the configuration file for sway and the bashrc
-#cp -r /home/$username/variousettings/debian-sway/.config/* /home/$username/.config
-\cp  /home/$username/variousettings/debian-sway/bashrc ~
+#cp -r /home/$username/LinuxStuff/debian-sway/.config/* /home/$username/.config
+\cp  /home/$username/LinuxStuff/debian-sway/bashrc ~
 mv  /home/$username/bashrc /home/$username/.bashrc
 cp -r /home/$username/GitHub/Sweet/ /usr/share/themes/
 
