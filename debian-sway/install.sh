@@ -28,12 +28,10 @@ nala install --no-install-recommends -y sddm
 
 cd $builddir
 
-mkdir -p /home/$username/.fonts
-mkdir -p /home/$username/.themes
 mkdir -p /home/$username/.config
 mkdir -p /home/$username/Downloads
 mkdir -p /home/$username/GitHub
-cd GitHub
+cd ~/GitHub
 git clone https://github.com/EliverLara/Sweet.git
 
 cd $builddir 
@@ -43,7 +41,7 @@ cd $builddir
 #cp -r /home/$username/variousettings/debian-sway/.config/* /home/$username/.config
 \cp  /home/$username/variousettings/debian-sway/bashrc ~
 mv  /home/$username/bashrc /home/$username/.bashrc
-cp -r /home/$username/GitHub/Sweet/ /home/$username/.themes/
+cp -r /home/$username/GitHub/Sweet/ /usr/share/themes/
 
 
 echo "done"
