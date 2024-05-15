@@ -19,9 +19,11 @@ apt update
 apt upgrade -y
 
 apt install nala git neofetch -y
-nala install shotwell kitty picom lxpolkit x11-xserver-utils unzip wget curl pipewire pavucontrol build-essential libx11-dev libxft-dev libxinerama-dev -y
-nala install light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome -y
-nala install dolphin -y
+nala install -y build-essential cmake cmake-extras curl gettext libnotify-bin light meson ninja-build libxcb-util0-dev libxkbcommon-dev libxkbcommon-x11-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev libstartup-notification0-dev
+nala install sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome -y
+nala install -y thunar thunar-archive-plugin thunar-volman file-roller
+nala install --no-install-recommends -y sddm
+#sudo systemctl enable sddm
 
 cd $builddir
 
@@ -38,8 +40,8 @@ cd $builddir
 mv /home/$username/.bashrc /home/$username/bashrc.bak
 
 #copying the configuration file for sway and the bashrc
-cp -r /home/$username/variousettings/debian-sway/.config/* /home/$username/.config
-cp  /home/$username/variousettings/debian-sway/bashrc /home/$username/
+#cp -r /home/$username/variousettings/debian-sway/.config/* /home/$username/.config
+#cp  /home/$username/variousettings/debian-sway/bashrc /home/$username/
 mv  /home/$username/bashrc /home/$username/.bashrc
 cp -r /home/$username/GitHub/Sweet/ /home/$username/.themes/
 
