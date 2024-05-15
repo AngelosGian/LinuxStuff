@@ -22,6 +22,7 @@ apt install nala git neofetch -y
 nala install -y build-essential cmake cmake-extras curl gettext libnotify-bin light meson ninja-build libxcb-util0-dev libxkbcommon-dev libxkbcommon-x11-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev libstartup-notification0-dev
 nala install sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome -y
 nala install -y thunar thunar-archive-plugin thunar-volman file-roller
+nala install -y dunst unzip xdotool libnotify-dev
 nala install --no-install-recommends -y sddm
 #sudo systemctl enable sddm
 
@@ -36,12 +37,11 @@ cd GitHub
 git clone https://github.com/EliverLara/Sweet.git
 
 cd $builddir 
-#rename the default bashrc file
-mv /home/$username/.bashrc /home/$username/bashrc.bak
+
 
 #copying the configuration file for sway and the bashrc
 #cp -r /home/$username/variousettings/debian-sway/.config/* /home/$username/.config
-#cp  /home/$username/variousettings/debian-sway/bashrc /home/$username/
+\cp  /home/$username/variousettings/debian-sway/bashrc ~
 mv  /home/$username/bashrc /home/$username/.bashrc
 cp -r /home/$username/GitHub/Sweet/ /home/$username/.themes/
 
