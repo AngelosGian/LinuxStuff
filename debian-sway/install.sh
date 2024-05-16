@@ -20,18 +20,32 @@ apt upgrade -y
 
 apt install -y nala neofetch picom
 nala install -y build-essential cmake cmake-extras curl gettext libnotify-bin light meson ninja-build libxcb-util0-dev libxkbcommon-dev libxkbcommon-x11-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev libstartup-notification0-dev
-nala install sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome -y
+#Sway 
+nala install -y sway swaybg swayidle swayimg swaylock waybar wofi 
+#for notifications
+nala install -y swaync 
+#or
+#nala install dunst 
+
+#Folder Manager
 nala install -y thunar thunar-archive-plugin thunar-volman file-roller
-nala install -y dunst unzip xdotool libnotify-dev pipewire pavucontrol
+
+nala install -y unzip xdotool libnotify-dev pipewire pavucontrol
+
+#fonts
+nala install -y fonts-font-awesome
+
+#display manager
 nala install --no-install-recommends -y sddm
-# sudo systemctl enable sddm
+sudo systemctl enable sddm
 
 cd $builddir
 
-mkdir -p ~/.config
-mkdir -p ~/Downloads
-mkdir -p ~/Github
-cd ~/Downloads
+mkdir -p /home/$username/.config
+mkdir -p /home/$username/Downloads
+mkdir -p /home/$username/Pictures
+mkdir -p /home/$username/Github
+cd /home/$username/Downloads
 git clone https://github.com/EliverLara/Sweet.git
 
 cd $builddir 
@@ -39,10 +53,10 @@ cd $builddir
 
 #copying the configuration file for sway and the bashrc
 #cp -r /home/$username/LinuxStuff/debian-sway/.config/* /home/$username/.config
-cp  ~/LinuxStuff/debian-sway/.bashrc ~
-sudo mv ~/Downloads/Sweet/ /usr/share/themes/
-sudo cp -r ~/LinuxStuff/.config/* ~/.config
+\cp  /home/$username/LinuxStuff/debian-sway/.bashrc ~
+sudo mv /home/$username/Downloads/Sweet/ /usr/share/themes/
+sudo cp -r /home/$username/LinuxStuff/.config/* /home/$username/.config
 
-echo "done"
+echo "$GREEN done successfully installing $GREEN"
 
 
