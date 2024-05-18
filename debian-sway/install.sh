@@ -19,13 +19,39 @@ apt upgrade -y
 
 # Install basic dependencies for Sway WM
 apt install -y nala
-nala install -y build-essential cmake cmake-extras curl glslang-tools libcairo2-dev libcap-dev libdbus-1-dev libdisplay-info-dev libevdev-dev libgdk-pixbuf2.0-dev libinput-dev libjson-c-dev libliftoff-dev libpam0g-dev libpango1.0-dev libpcre2-dev libpixman-1-dev libseat-dev libsystemd-dev libvulkan-dev libwayland-dev libwayland-egl1 libwlroots-dev libxcb-ewmh-dev libxkbcommon-dev meson pkgconf scdoc wayland-protocols
+
+# Check if expect is installed, and install if necessary
+if ! command -v expect &> /dev/null; then
+    echo "expect not found, installing..."
+    nala install -y expect
+fi
+
+# Use expect to automate nala fetch
+expect <<EOF
+set timeout -1
+
+# Start the nala fetch process
+spawn nala fetch
+
+# Define the expected prompt and the response
+expect "Enter the numbers of the mirrors you want to use (separate by space):"
+send "1 2 3\r"
+
+# Allow the process to complete
+expect eof
+EOF
+
+# Continue with the rest of your script
+echo "nala fetch completed automatically"
+
+nala install -y build-essential cmake cmake-extras curl glslang-tools 
+#libcairo2-dev libcap-dev libdbus-1-dev libdisplay-info-dev libevdev-dev libgdk-pixbuf2.0-dev libinput-dev libjson-c-dev libliftoff-dev libpam0g-dev libpango1.0-dev libpcre2-dev libpixman-1-dev libseat-dev libsystemd-dev libvulkan-dev libwayland-dev libwayland-egl1 libwlroots-dev libxcb-ewmh-dev libxkbcommon-dev meson pkgconf scdoc wayland-protocols
 
 # Install Sway and related tools
 nala install -y sway swaybg swayidle swaylock waybar wofi
 
 # Install notification daemon
-nala install -y swaync
+# nala install -y swaync
 
 # Install file manager
 nala install -y thunar thunar-archive-plugin thunar-volman file-roller
@@ -57,9 +83,9 @@ cp /home/$username/LinuxStuff/debian-sway/.bashrc ~
 
 # Copy evangelion.jpg to the background location
 mkdir -p /home/$username/.config/sway
-cp /home/$username/LinuxStuff/debian-sway/evangelion-unit-01-4k-pc-1920x1080.jpg /home/$username/.config/sway/
+cp /home/$username/LinuxStuff/debian-sway/evangelion.jpg /home/$username/.config/sway/
 
 # Set the background in the Sway config
-echo 'output * bg /home/'$username'/.config/sway/evangelion-unit-01-4k-pc-1920x1080.jpg fill' >> /home/$username/.config/sway/config
+echo 'output * bg /home/'$username'/.config/sway/evangelion.jpg fill' >> /home/$username/.config/sway/config
 
 echo "$GREEN done successfully installing $GREEN"
