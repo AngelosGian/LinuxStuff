@@ -5,7 +5,6 @@ RED='\e[31m'
 YELLOW='\e[33m'
 GREEN='\e[32m'
 
-
 # Check if Script is Run as Root
 if [[ $EUID -ne 0 ]]; then
   echo "You must be a root user to run this script, please run sudo ./install.sh" 2>&1
@@ -18,48 +17,49 @@ builddir=$(pwd)
 apt update
 apt upgrade -y
 
-apt install -y nala neofetch
-# nala install -y build-essential cmake cmake-extras curl gettext libnotify-bin light meson ninja-build libxcb-util0-dev libxkbcommon-dev libxkbcommon-x11-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev libstartup-notification0-dev
+# Install basic dependencies for Sway WM
+apt install -y nala
+nala install -y build-essential cmake cmake-extras curl glslang-tools libcairo2-dev libcap-dev libdbus-1-dev libdisplay-info-dev libevdev-dev libgdk-pixbuf2.0-dev libinput-dev libjson-c-dev libliftoff-dev libpam0g-dev libpango1.0-dev libpcre2-dev libpixman-1-dev libseat-dev libsystemd-dev libvulkan-dev libwayland-dev libwayland-egl1 libwlroots-dev libxcb-ewmh-dev libxkbcommon-dev meson pkgconf scdoc wayland-protocols
 
+# Install Sway and related tools
+nala install -y sway swaybg swayidle swaylock waybar wofi
 
-nala install -y build-essential cmake cmake-extras curl glslang-tools libcairo2-dev libcap-dev libdbus-1-dev libdisplay-info-dev libevdev-dev libgdk-pixbuf2.0-dev libinput-dev libjson-c-dev libliftoff-dev libpam0g-dev libpango1.0-dev libpcre2-dev libpixman-1-dev libseat-dev libsystemd-dev libvulkan-dev libwayland-dev libwayland-egl1 libwlroots-dev libxcb-ewmh-dev libxkbcommon-dev meson pkgconf scdoc tree wayland-protocols
-#Sway 
-nala install -y sway swaybg swayidle swayimg swaylock waybar wofi 
-#for notifications
-nala install -y swaync 
-#or
-#nala install dunst 
+# Install notification daemon
+nala install -y swaync
 
-#Folder Manager
+# Install file manager
 nala install -y thunar thunar-archive-plugin thunar-volman file-roller
 
+# Install additional utilities
 nala install -y unzip xdotool libnotify-dev pipewire pavucontrol
 
-#fonts
+# Install fonts
 nala install -y fonts-font-awesome
 
-#display manager
+# Install display manager
 nala install --no-install-recommends -y sddm
 sudo systemctl enable sddm
 
-cd $builddir
-
+# Create necessary directories
 mkdir -p /home/$username/.config
 mkdir -p /home/$username/Downloads
 mkdir -p /home/$username/Pictures
 mkdir -p /home/$username/Github
+
+# Clone and move theme
 cd /home/$username/Downloads
 git clone https://github.com/EliverLara/Sweet.git
-
-cd $builddir 
-
-
-#copying the configuration file for sway and the bashrc
-#cp -r /home/$username/LinuxStuff/debian-sway/.config/* /home/$username/.config
-cp  /home/$username/LinuxStuff/debian-sway/.bashrc ~
 sudo mv /home/$username/Downloads/Sweet/ /usr/share/themes/
+
+# Copy configuration files
 sudo cp -r /home/$username/LinuxStuff/.config/* /home/$username/.config
+cp /home/$username/LinuxStuff/debian-sway/.bashrc ~
+
+# Copy evangelion.jpg to the background location
+mkdir -p /home/$username/.config/sway
+cp /home/$username/LinuxStuff/debian-sway/evangelion-unit-01-4k-pc-1920x1080.jpg /home/$username/.config/sway/
+
+# Set the background in the Sway config
+echo 'output * bg /home/'$username'/.config/sway/evangelion-unit-01-4k-pc-1920x1080.jpg fill' >> /home/$username/.config/sway/config
 
 echo "$GREEN done successfully installing $GREEN"
-
-
