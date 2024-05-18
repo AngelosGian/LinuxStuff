@@ -19,24 +19,36 @@ builddir=$(pwd)
 apt update
 apt upgrade -y
 
-# Install nala
-apt install nala -y
 
 # Making .config and Moving config files and background to Pictures
 cd $builddir
 mkdir -p /home/$username/.config
 mkdir -p /home/$username/.fonts
-# mkdir -p /home/$username/Pictures
-# mkdir -p /home/$username/Downloads
+mkdir -p /home/$username/Pictures
+mkdir -p /home/$username/Downloads
 mkdir -p /home/$username/GitHub
 
 
 chown -R $username:$username /home/$username
 
+# Install nala
+apt install nala -y
+if ! command -v expect &amp;&gt; /dev/null; then
+    echo "expect not found, installing..."
+    sudo apt-get install -y expect
+fi
+
+# Source the nala_fetch_auto.sh script
+expect nala_fetch_auto.sh
+
+# Continue with the rest of your script
+echo "nala fetch completed automatically"
+
+
 # Installing Essential Programs 
-nala install shotwell kitty picom lxpolkit x11-xserver-utils unzip wget curl pulseaudio pavucontrol build-essential libx11-dev libxft-dev libxinerama-dev kde-plasma-desktop -y
+nala install -y shotwell kitty picom lxpolkit x11-xserver-utils unzip wget curl pulseaudio pavucontrol build-essential libx11-dev libxft-dev libxinerama-dev
 # Installing Other less important Programs
-nala install neofetch psmisc mangohud vim lxappearance papirus-icon-theme fonts-noto-color-emoji -y
+nala install -y neofetch psmisc mangohud kate lxappearance fonts-noto-color-emoji -y
 
 # Download Nordic Theme
 cd /usr/share/themes/
