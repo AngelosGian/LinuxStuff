@@ -16,10 +16,10 @@ username=$(id -u -n 1000)
 builddir=$(pwd)
 
 zypper ref
-zypper up
-zypper dup
+zypper --non-interactive up
+zypper --non-interactive dup
 
-zypper in neofetch shotwell kitty picom
+zypper in --non-interactive fastfetch kitty
 
 
 cd $builddir
@@ -29,21 +29,17 @@ mkdir -p /home/$username/.themes
 mkdir -p /home/$username/.config
 mkdir -p /home/$username/Github
 
-cd ~/Downloads
+cd /home/$username/Downloads
 git clone https://github.com/EliverLara/Sweet.git
 cd ../Github
 
 
 cd $builddir 
 #rename the default bashrc file
-mv /home/$username/.bashrc /home/$username/bashrc.bak
+
 
 #copying the configuration file for sway and the bashrc
-cp -r /home/$username/variousettings/debian-sway/.config/* /home/$username/.config
-cp  /home/$username/variousettings/debian-sway/bashrc /home/$username/
-mv  /home/$username/bashrc /home/$username/.bashrc
-cp -r /home/$username/GitHub/Sweet/ /home/$username/.themes/
-
+cp  /home/$username/LinuxStuff/openSUSE/.bashrc /home/$username/
 
 echo "done"
 
