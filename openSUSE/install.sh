@@ -42,5 +42,3 @@ cd $builddir
 cp  /home/$username/LinuxStuff/openSUSE/.bashrc /home/$username/
 
 echo "done"
-
-
