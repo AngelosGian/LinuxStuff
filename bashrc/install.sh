@@ -16,8 +16,8 @@ username=$(id -u -n 1000)
 builddir=$(pwd)
 
 # Update packages list and update system
-apt update
-apt upgrade -y
+apt-get update
+apt-get upgrade -y
 
 
 # Making .config and Moving config files and background to Pictures
