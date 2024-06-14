@@ -18,6 +18,7 @@ builddir=$(pwd)
 # Update packages list and update system
 apt-get update
 apt-get upgrade -y
+apt-get install -y nala git
 
 
 # Making .config and Moving config files and background to Pictures
@@ -32,16 +33,6 @@ mkdir -p /home/$username/GitHub
 chown -R $username:$username /home/$username
 
 # Install nala
-apt-get install nala -y
-if ! command -v expect &amp;&gt; /dev/null; then
-    echo "expect not found, installing..."
-    sudo apt-get install -y expect
-fi
-
-
-
-# Continue with the rest of your script
-echo "nala fetch completed automatically"
 
 
 # Installing Essential Programs 
@@ -56,24 +47,21 @@ git clone https://github.com/EliverLara/Sweet.git
 # Installing fonts
 cd $builddir 
 nala install fonts-font-awesome -y
-#wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/FiraCode.zip
 unzip FiraCode.zip -d /home/$username/.fonts
-#wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
+
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/Meslo.zip
 unzip Meslo.zip -d /home/$username/.fonts
 
 chown $username:$username /home/$username/.fonts/*
-#https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip
+
 # Reloading Font
 fc-cache -vf
 # Removing zip Files
 rm ./FiraCode.zip ./Meslo.zip
 
 
-command_exists () {
-    command -v $1 >/dev/null 2>&1;
-}
 
 installStarship(){
     if command_exists starship; then
@@ -87,8 +75,7 @@ installStarship(){
     fi
 }
 
-cd ~/
-sudo mv .bashrc .bashrc.bak; sudo cp -r ~/variousettings/bashrc-debian ~/.bashrc; sudo cp -r ~/varioussettings/starship-custom-debian.toml ~/.config/starship.toml
+
 
 
 
