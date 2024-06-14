@@ -17,7 +17,7 @@ builddir=$(pwd)
 
 # Update packages list and update system
 apt-get update
-apt-get -y upgrade 
+apt-get upgrade -y
 
 
 # Making .config and Moving config files and background to Pictures
@@ -32,7 +32,16 @@ mkdir -p /home/$username/GitHub
 chown -R $username:$username /home/$username
 
 # Install nala
-apt-get install -y nala
+apt-get install nala -y
+if ! command -v expect &amp;&gt; /dev/null; then
+    echo "expect not found, installing..."
+    sudo apt-get install -y expect
+fi
+
+
+
+# Continue with the rest of your script
+echo "nala fetch completed automatically"
 
 
 # Installing Essential Programs 
