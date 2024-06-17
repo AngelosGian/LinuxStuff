@@ -19,7 +19,7 @@ zypper ref
 zypper --non-interactive up
 zypper --non-interactive dup
 
-zypper in --non-interactive fastfetch kitty
+zypper in --non-interactive fastfetch kitty --no-recommends
 
 
 cd $builddir
