@@ -53,11 +53,11 @@ export EDITOR=nano
 export VISUAL=nano
 # alias pico='edit'
 # alias spico='sedit'
-alias nano='edit'
+# alias nano='edit'
 # alias snano='sedit'
 #alias vim='nvim'
-alias vs='code'
-alias cat='batcat'
+# alias vs='code'
+alias cat='bat'
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
@@ -125,7 +125,7 @@ alias freshclam='sudo freshclam'
 alias home='cd ~'
 alias dlds='cd ~/Downloads'
 alias documents='cd ~/Documents'
-alias github='cd ~/GitHub'
+alias github='cd ~/Github'
 alias videos='cd ~/Videos'
 alias pictures='cd ~/Pictures'
 alias cd..='cd ..'
@@ -186,9 +186,9 @@ alias reboot='sudo shutdown -r now'
 alias shutdown='sudo shutdown now'
 
 # Alias's for updated, upgrade distros and install packages
-alias update='sudo zypper ref;sudo zypper --non-interactive up'
-alias upgrade='sudo zypper --non-interactive dup --allow-vendor-change'
-alias instapp='sudo zypper --non-interactive in'
+alias update='sudo zypper ref;sudo zypper -n up'
+alias upgrade='sudo zypper -n dup --allow-vendor-change'
+alias instapp='sudo zypper -n in '
 alias list='sudo zypper list'
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
