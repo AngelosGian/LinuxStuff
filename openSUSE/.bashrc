@@ -5,6 +5,14 @@ iatest=$(expr index "$-" i)
 # SOURCED ALIAS'S AND SCRIPTS BY zachbrowne.me
 #######################################################
 
+
+# Run fastfetch if it's installed
+if command -v fastfetch &> /dev/null; then
+    fastfetch
+else
+    echo "fastfetch is not installed. You can install it using your package manager."
+fi
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	 . /etc/bashrc
