@@ -194,8 +194,8 @@ alias reboot='sudo shutdown -r now'
 alias shutdown='sudo shutdown now'
 
 # Alias's for updated, upgrade distros and install packages
-alias update='sudo zypper ref;sudo zypper -n up'
-alias upgrade='sudo zypper -n dup'
+alias update='sudo zypper ref;sudo zypper -n --color up'
+alias upgrade='sudo zypper -n --color dup'
 alias installapp='sudo zypper -n in'
 alias list='sudo zypper list'
 alias search='sudo zypper se'
