@@ -59,12 +59,6 @@ if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 # Set the default editor
 export EDITOR=nano
 export VISUAL=nano
-# alias pico='edit'
-# alias spico='sedit'
-# alias nano='edit'
-# alias snano='sedit'
-#alias vim='nvim'
-# alias vs='code'
 alias cat='bat'
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
@@ -195,7 +189,7 @@ alias shutdown='sudo shutdown now'
 
 # Alias's for updated, upgrade distros and install packages
 alias update='sudo zypper ref;sudo zypper -n --color up'
-alias upgrade='sudo zypper -n --color dup'
+alias upgrade='sudo zypper -n dup --color'
 alias installapp='sudo zypper -n in'
 alias list='sudo zypper list'
 alias search='sudo zypper se'
@@ -234,32 +228,32 @@ alias kssh="kitty +kitten ssh"
 #######################################################
 
 # Use the best version of pico installed
-edit ()
-{
-	if [ "$(type -t jpico)" = "file" ]; then
-		# Use JOE text editor http://joe-editor.sourceforge.net/
-		jpico -nonotice -linums -nobackups "$@"
-	elif [ "$(type -t nano)" = "file" ]; then
-		nano -c "$@"
-	elif [ "$(type -t pico)" = "file" ]; then
-		pico "$@"
-	else
-		nvim "$@"
-	fi
-}
-sedit ()
-{
-	if [ "$(type -t jpico)" = "file" ]; then
-		# Use JOE text editor http://joe-editor.sourceforge.net/
-		sudo jpico -nonotice -linums -nobackups "$@"
-	elif [ "$(type -t nano)" = "file" ]; then
-		sudo nano -c "$@"
-	elif [ "$(type -t pico)" = "file" ]; then
-		sudo pico "$@"
-	else
-		sudo nvim "$@"
-	fi
-}
+# edit ()
+# {
+# 	if [ "$(type -t jpico)" = "file" ]; then
+# 		# Use JOE text editor http://joe-editor.sourceforge.net/
+# 		jpico -nonotice -linums -nobackups "$@"
+# 	elif [ "$(type -t nano)" = "file" ]; then
+# 		nano -c "$@"
+# 	elif [ "$(type -t pico)" = "file" ]; then
+# 		pico "$@"
+# 	else
+# 		nvim "$@"
+# 	fi
+# }
+# sedit ()
+# {
+# 	if [ "$(type -t jpico)" = "file" ]; then
+# 		# Use JOE text editor http://joe-editor.sourceforge.net/
+# 		sudo jpico -nonotice -linums -nobackups "$@"
+# 	elif [ "$(type -t nano)" = "file" ]; then
+# 		sudo nano -c "$@"
+# 	elif [ "$(type -t pico)" = "file" ]; then
+# 		sudo pico "$@"
+# 	else
+# 		sudo nvim "$@"
+# 	fi
+# }
 
 # Extracts any archive(s) (if unp isn't installed)
 extract () {
@@ -461,9 +455,9 @@ install_bashrc_support ()
 	if [ $dtype == "redhat" ]; then
 		sudo yum install multitail tree joe
 	elif [ $dtype == "suse" ]; then
-		sudo zypper install multitail
-		sudo zypper install tree
-		sudo zypper install joe
+		sudo zypper in multitail
+		sudo zypper in tree
+		sudo zypper in joe
 	elif [ $dtype == "debian" ]; then
 		sudo apt-get install multitail tree joe
 	elif [ $dtype == "gentoo" ]; then
@@ -503,8 +497,8 @@ function whatsmyip ()
 	if [ -e /sbin/ip ];
 	then
 		echo -n "Internal IP: " ; /sbin/ip addr show enp4s0 | grep "inet " | awk -F: '{print $1}' | awk '{print $2}'
-	else
-		echo -n "Internal IP: " ; /sbin/ifconfig enp4s0 | grep "inet " | awk -F: '{print $1} |' | awk '{print $2}'
+	# else
+	# 	echo -n "Internal IP: " ; /sbin/ifconfig enp4s0 | grep "inet " | awk -F: '{print $1} |' | awk '{print $2}'
 	fi
 
 	# External IP Lookup 
@@ -669,7 +663,7 @@ export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bi
 # Install Starship - curl -sS https://starship.rs/install.sh | sh
 
 eval "$(starship init bash)"
-
+eval "$(zoxide init --cmd cd bash)"
 #Autojump
 
 #if [ -f "/usr/share/autojump/autojump.sh" ]; then
