@@ -11,4 +11,4 @@ SYS_DIRECTORY="/var/www/vhosts/system/"
 IP_ADDRESS="$1"
 
 # Search for the IP address in the directory
-grep -r --exclude="*.gz" "$IP_ADDRESS" "$SYS_DIRECTORY"
+grep -r --exclude="*.gz" --color=auto "$IP_ADDRESS" "$SYS_DIRECTORY"
