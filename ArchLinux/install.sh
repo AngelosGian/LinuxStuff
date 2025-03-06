@@ -59,7 +59,6 @@ EXTRA_PACKAGES=(
     psmisc
     mangohud
     lxappearance
-    kate
     fonts-noto-color-emoji
     fonts-font-awesome
 )
