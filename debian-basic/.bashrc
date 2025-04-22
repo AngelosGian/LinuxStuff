@@ -510,7 +510,8 @@ function whatsmyip ()
 
 	# External IP Lookup 
 	#echo -n "External IP: " ; curl -s ifconfig.me
-	echo -n "External IP: " ; wget http://smart-ip.net/myip -O - -q
+	# echo -n "External IP: " ; wget http://smart-ip.net/myip -O - -q
+	echo -n "External IP: " ; wget https://ip.innovateone.io/ip -O - -q
 }
 
 # View Apache logs
